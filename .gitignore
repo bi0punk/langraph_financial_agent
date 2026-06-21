@@ -21,4 +21,5 @@ Thumbs.db
 # Project specific
 *.log
 *.db
+*.csv
 
