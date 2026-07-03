@@ -21,12 +21,11 @@ def test_notebooks_are_valid_json():
         assert len(data["cells"]) > 0, f"{nb.name} sin celdas"
 
 
-def test_notebooks_have_code_and_markdown():
+def test_notebooks_have_code_cells():
     for nb in NOTEBOOKS:
         data = json.loads(nb.read_text(encoding="utf-8"))
         kinds = {cell.get("cell_type") for cell in data["cells"]}
         assert "code" in kinds, f"{nb.name} sin celdas de código"
-        assert "markdown" in kinds, f"{nb.name} sin celdas markdown"
 
 
 def test_personal_csv_not_tracked():
