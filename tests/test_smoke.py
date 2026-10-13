@@ -3,7 +3,7 @@
 from __future__ import annotations
 
 import json
-import subprocess
+import subprocess  # nosec B404
 from pathlib import Path
 
 REPO_ROOT = Path(__file__).resolve().parent.parent
@@ -30,7 +30,7 @@ def test_notebooks_have_code_cells():
 
 def test_personal_csv_not_tracked():
     """El CSV de movimientos bancarios (datos personales) no debe commitearse."""
-    tracked = subprocess.run(
+    tracked = subprocess.run(  # nosec B603, B607
         ["git", "ls-files"], cwd=REPO_ROOT, capture_output=True, text=True, check=True
     ).stdout
     csv_tracked = [line for line in tracked.splitlines() if line.endswith(".csv")]
