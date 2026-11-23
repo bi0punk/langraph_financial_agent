@@ -88,7 +88,10 @@ No requiere variables de entorno. El único input es el CSV de movimientos en la
 
 ## Tests / CI
 
+`pytest` y `ruff` no forman parte de `requirements.txt`; instálalos aparte:
+
 ```bash
+pip install pytest ruff
 pytest -q
 ```
 
@@ -103,7 +106,7 @@ El workflow se dispara en push y PR a `main`/`master`.
 
 ## Datos
 
-El archivo `movimientos_cartola_2025-12_a_2026-01.csv` contiene **movimientos bancarios personales** y **no se commitea** (excluido vía `.gitignore` con `*.csv`). Coloca tu propio CSV con el esquema:
+El archivo `movimientos_cartola_2025-12_a_2026-01.csv` contiene **movimientos bancarios personales** y **no se commitea** (excluido vía `.gitignore` con `*.csv`). Los notebooks leen ese nombre de archivo de forma fija: usa exactamente ese nombre o edita la ruta en la celda de carga de cada notebook. El CSV debe tener el esquema:
 
 ```csv
 fecha,descripcion,canal,monto_clp,tipo,monto_abs_clp
